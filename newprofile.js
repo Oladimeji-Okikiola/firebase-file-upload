@@ -3,22 +3,6 @@ let openMenu = document.getElementById('openMenu')
 let closeMenu = document.getElementById('closeMenu')
 let headerTwoNav = document.getElementById('headerTwoNav')
 
-// openMenu.addEventListener('click', () => {
-//   if(headerTwoNav.style.display == 'none'){
-//       headerTwoNav.style.display = 'block'
-//   }else{
-//     headerTwoNav.style.display = 'none'
-//   }
-// })
-
-// closeMenu.addEventListener('click', () => {
-//   if(headerTwoNav.style.display == 'block'){
-//     headerTwoNav.style.display = 'none'
-// }else{
-//   headerTwoNav.style.display = 'block'
-// }
-// })
-
 
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
@@ -58,46 +42,76 @@ let headerTwoNav = document.getElementById('headerTwoNav')
 
   
 
-//   FUNCTION TO GET DATA FROM DATABASE AND DISPLAY IT
-
-  async function logUserDetails(userId){
-    var ref = doc(db, "Registered_Users", userId)
-    const docSnap = await getDoc(ref)
-    if(docSnap.exists()){
-      let usernamed = document.getElementById('usernamed')
-      let profilePicture = document.getElementById('userImage')
-
-      let FirstName = docSnap.data().Firstname
-      let Lastname = docSnap.data().Lastname
-      let profilePictureData = docSnap.data().profilePicture
-
-      profilePicture.src = profilePictureData
-      usernamed.textContent = FirstName + " " + Lastname
-
-        // console.log(docSnap.data())
-    }else{
-        alert('data does not exist')
-        window.location.href = 'account.html'
-    }
-}
-
-
-
+  
+  
 
 
 //   FUNTION TO CHECK IF USER IS LOGGED IN OR OUT
-  function stateChanged(){
-    onAuthStateChanged(auth, (user) => {
-        if(user){
-            let userId = user.uid
-            logUserDetails(userId)
-            // console.log(userId)
-        }else{
-            window.location.href = 'account.html'
-        }
-    })
+let cachedUserData = null; // In-memory storage
+
+function stateChanged() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User signed in
+      logUserDetails(user);
+    } else {
+      // User signed out
+      cachedUserData = null;
+      updateUI(); // Update UI to reflect no cached data
+    }
+  });
+}
+stateChanged();
+
+async function logUserDetails(user) {
+  if (!user) return; // Handle cases where user might be null
+
+  try {
+    const ref = doc(db, "Registered_Users", user.uid);
+    const docSnap = await getDoc(ref);
+
+    if (docSnap.exists()) {
+      cachedUserData = {
+        Firstname: docSnap.data().Firstname,
+        Lastname: docSnap.data().Lastname,
+        Username: docSnap.data().Username,
+        PhoneNumber: docSnap.data().PhoneNumber,
+        DateOfBirth: docSnap.data().DateOfBirth,
+        Gender: docSnap.data().Gender,
+        profilePicture: docSnap.data().profilePicture,
+      };
+      updateUI(); // Update UI with fetched data
+    } else {
+      cachedUserData = null; // No data found, clear cache
+    }
+  } catch (error) {
+    console.error("Error fetching user details:", error);
+    // Handle errors appropriately (e.g., display error message to user)
   }
-  stateChanged()
+}
+
+function updateUI() {
+  // Access the UI elements and update them based on cachedUserData
+  // (similar to your retrieveCached function)
+  if (cachedUserData) {
+    const usernamed = document.getElementById('usernamed');
+    const profilePicture = document.getElementById('userImage');
+
+    profilePicture.src = cachedUserData.profilePicture;
+    usernamed.textContent = `${cachedUserData.Firstname} ${cachedUserData.Lastname}`;
+  } else {
+    // Handle cases where no data is cached (clear UI elements)
+  }
+}
+
+// Call updateUI() initially to handle potential cached data on page load
+updateUI();
+
+
+
+
+
+
 
   signOutBtn.addEventListener('click', signOutUser)
 
@@ -106,7 +120,7 @@ let headerTwoNav = document.getElementById('headerTwoNav')
   let mainInfo = document.getElementById('mainInfo')
 
   async function displayInformation(){
-    var ref = doc(db, "NOTIFICATION")
+    var ref = doc(db, "NOTIFICATION", 'recent')
     const docSnap = await getDoc(ref)
     if(docSnap.exists()){
       var newDiv = document.createElement('div')
@@ -126,3 +140,27 @@ let headerTwoNav = document.getElementById('headerTwoNav')
   displayInformation()
 
 
+
+
+
+  //   FUNCTION TO GET DATA FROM DATABASE AND DISPLAY IT
+  
+  //   async function logUserDetails(userId){
+  //     var ref = doc(db, "Registered_Users", userId)
+  //     const docSnap = await getDoc(ref)
+  //     if(docSnap.exists()){
+  //       let usernamed = document.getElementById('usernamed')
+  //       let profilePicture = document.getElementById('userImage')
+  
+  //       let FirstName = docSnap.data().Firstname
+  //       let Lastname = docSnap.data().Lastname
+  //       let profilePictureData = docSnap.data().profilePicture
+  
+  //       profilePicture.src = profilePictureData
+  //       usernamed.textContent = FirstName + " " + Lastname
+  
+  //     }else{
+  //         alert('data does not exist')
+  //         window.location.href = 'account.html'
+  //     }
+  // }

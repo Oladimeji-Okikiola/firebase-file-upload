@@ -132,10 +132,12 @@ onChildAdded(ref(db, 'newMessage'), snapshot => {
 
         outgoingText.setAttribute('id', 'outgoingMessages');
         outgoingText.textContent = 'You : ' + snapshot.val().message;
-        dateAndTime.textContent = snapshot.val().timestamp
+        // dateAndTime.textContent = snapshot.val().timestamp
         outgoingText.appendChild(deleteBtn);
         newDiv.append(outgoingText, dateAndTime);
         incoming.appendChild(newDiv);
+        newDiv.scrollIntoView()
+        incoming.scrollIntoView()
 
         let messageOut = snapshot.val().message
         notificationIn(messageOut)

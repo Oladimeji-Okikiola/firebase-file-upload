@@ -111,7 +111,7 @@
      <!-- THE NAVIGATION BAR -->
    <div class="header">
     <div class="logo">
-        <h3>STUDENT SUPPORT</h3>
+        <h3>KAMPUS KONNECT</h3>
     </div>
     <div class="navigation">
         <div class="navAndPic">
@@ -177,7 +177,7 @@
 
 
      
-
+<script type="module" src="newprofile.js"></script>
 
 <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
@@ -211,6 +211,7 @@
                 // console.log(userId)
                 userIdentification = userId
             }else{
+                deleteCachedData()
                 window.location.href = 'account.html'
             }
         })
@@ -218,36 +219,68 @@
     stateChanged()
 
     //   FUNCTION TO GET DATA FROM DATABASE AND DISPLAY IT
-
     async function logUserDetails(userId){
         var ref = doc(db, "Registered_Users", userId)
         const docSnap = await getDoc(ref)
         if(docSnap.exists()){
-            let newDiv = document.getElementById('myProfileDetails')
-            newDiv.innerHTML = `
-            
-            <img src="${docSnap.data().profilePicture}" alt="my profile picture">
-            
-            <label for="Firstname">Firstname:</label>
-            <h3>${docSnap.data().FirstName}</h3>        
-            <label for="Lastname">Lastname:</label>
-            <h3>${docSnap.data().LastName}</h3>        
-            <label for="Username">Username:</label>
-            <h3>${docSnap.data().username}</h3>        
-            <label for="phoneNumber">Phone Number:</label>
-            <h3>${docSnap.data().phoneNumber}</h3>        
-            <label for="email">Email:</label>
-            <h3>${docSnap.data().email}</h3>  
-    
-            <label for="dateOfBirth">Date of Birth:</label>
-            <h3>${docSnap.data().dateOfBirth}</h3>        
-            <label for="gender">Gender:</label>
-            <h3>${docSnap.data().gender}</h3>        
-            `
+            console.log(docSnap.data());
+
+            const data = {
+                Firstname : docSnap.data().Firstname,
+                Lastname : docSnap.data().Lastname,
+                Username : docSnap.data().Username,
+                PhoneNumber : docSnap.data().PhoneNumber,
+                DateOfBirth : docSnap.data().DateOfBirth,
+                Gender : docSnap.data().Gender,
+                profilePicture : docSnap.data().profilePicture
+            }
+            cacheIncoming(data)
+
         }else{
             alert('data does not exist, please sign in to continue')
             window.location.href = 'account.html'
         }
+    }
+
+    // FUNCTION TO CACHE THE RECEIVED DATA TO THE LOCAL STORAGE
+    function cacheIncoming(data){
+        localStorage.setItem('userdata', JSON.stringify(data))
+    }
+
+    // FUNCTION TO RETRIEVE THE CACHE DATA FROM THE LOCAL STORAGE AND POPULATE TO UI
+    function retrieveCached(){
+        const cachedData = localStorage.getItem('userdata')
+        const convertedData = JSON.parse(cachedData)
+
+        console.log(cachedData);
+
+            let newDiv = document.getElementById('myProfileDetails')
+            newDiv.innerHTML = `
+            
+            <img src="${convertedData.profilePicture}" alt="my profile picture">
+            
+            <label for="Firstname">Firstname:</label>
+            <h3>${convertedData.Firstname}</h3>        
+            <label for="Lastname">Lastname:</label>
+            <h3>${convertedData.Lastname}</h3>        
+            <label for="Username">Username:</label>
+            <h3>${convertedData.Username}</h3>        
+            <label for="phoneNumber">Phone Number:</label>
+            <h3>${convertedData.PhoneNumber}</h3>        
+            <label for="email">Email:</label>
+            <h3>${convertedData.Email}</h3>  
+    
+            <label for="dateOfBirth">Date of Birth:</label>
+            <h3>${convertedData.DateOfBirth}</h3>        
+            <label for="gender">Gender:</label>
+            <h3>${convertedData.Gender}</h3>        
+            `
+    }
+    retrieveCached()
+
+    // FUNCTION TO DELETE THE CACHED DATA FROM THE LOCAL STORAGE
+    function deleteCachedData(){
+        localStorage.removeItem('userdata')
     }
 
 
@@ -263,8 +296,8 @@
         let newPhoneNumber = phoneNumberEdit.value
 
         await updateDoc(ref, {
-            username : newUsername,
-            phoneNumber : newPhoneNumber
+            Username : newUsername,
+            PhoneNumber : newPhoneNumber
         })
         .then(() => {
             alert('Document updated Successfully')
@@ -275,14 +308,6 @@
     }
 
     updateBtn.addEventListener('click', updateProfile)
-
-
-
-
-
-
-
-
 
 
 

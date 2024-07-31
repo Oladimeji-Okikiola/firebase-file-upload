@@ -51,8 +51,8 @@
     }
     #accountant ul li{
         background-color: #8F758E;
-        border: 2px solid white;
-        outline: 2px solid rgb(0, 34, 255);
+        border: 2px solid #8F758E;
+        outline: 3px solid white;
         border-radius: 10px;
         margin: 5px;
         height: 10px;
@@ -86,9 +86,14 @@
         font-size: 25px;
     }
     .imageAndContent{
-        display: grid;
+        display: flex;
+        justify-content: center;
         align-items: center;
-        grid-template-columns: 50fr 50fr;
+        flex-direction: column;
+        gap: 6px;
+        /* display: grid;
+        align-items: center;
+        grid-template-columns: 50fr 50fr; */
     }
     .footer{
         display: flex;

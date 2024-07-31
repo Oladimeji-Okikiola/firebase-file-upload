@@ -10,6 +10,10 @@
 
 
 @media only screen and (min-width: 475px) {
+    .deleteBtn{
+        display: none;
+        position: absolute;
+    }
     .inputAndButtom{
         background-color:  #8F758E;
         position: fixed;
@@ -138,7 +142,12 @@
 }
 
 
+
 @media only screen and (max-width: 475px){
+    .deleteBtn{
+        display: none;
+        position: absolute;
+    }
     .inputAndButtom{
         background-color:  #8F758E;
         position: fixed;
