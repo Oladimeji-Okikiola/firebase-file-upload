@@ -92,7 +92,7 @@
         const app = initializeApp(firebaseConfig);
         let db = getFirestore();
         let displayTutorial = document.getElementById('displayTutorial');
-        const myCollection = collection(db, 'FPASUBAR');
+        const myCollection = collection(db, 'STUDENTAFFAIRS');
         
         searchBtn.addEventListener('keyup', e => {
             let searchedString = e.target.value.toLowerCase();

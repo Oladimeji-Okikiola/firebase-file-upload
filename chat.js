@@ -1,7 +1,4 @@
 
-
-
-
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
@@ -89,7 +86,7 @@
     })
 
     // FUNTION TO RECEIVE NOTIFICATION
-    let WebName = "Student's Support"
+    let WebName = "KampusKonnect"
 
     function notificationIn(messageOut){
             Notification.requestPermission()
@@ -97,7 +94,7 @@
                 if(permission == 'granted'){
                     var notificationNow = new Notification(WebName, {
                          body: messageOut,
-                         icon: "images/profile image.png",
+                         icon: "images/logoWhite.png",
                          tag: 'same text'
                     })
                     notificationNow.addEventListener('click', () => {
@@ -134,16 +131,32 @@ onChildAdded(ref(db, 'newMessage'), snapshot => {
         outgoingText.textContent = 'You : ' + snapshot.val().message;
         // dateAndTime.textContent = snapshot.val().timestamp
         outgoingText.appendChild(deleteBtn);
-        newDiv.append(outgoingText, dateAndTime);
+        newDiv.append(outgoingText);
         incoming.appendChild(newDiv);
         newDiv.scrollIntoView()
-        incoming.scrollIntoView()
+        outgoingText.scrollIntoView()
 
         let messageOut = snapshot.val().message
         notificationIn(messageOut)
+        // let deleteBox = document.getElementById('deleteBox')
+        // outgoingText.addEventListener('contextmenu', (e) => {
+        //     e.preventDefault()
 
+        //     let layeyX = e.layerX
+        //     let layeyY = e.layerY
+
+        //     deleteBox.style.visibility = 'visible'
+        //     deleteBtn.style.position = 'relative'
+        //     deleteBox.style.top = layeyY + 'px'
+        //     deleteBox.style.left = layeyX + 'px'
+        //     deleteBox.scrollIntoView()
+            // console.log(layerX);
+            // alert('context menu used')
+        // })
+        
         deleteBtn.addEventListener('click', () => {
             remove(ref(db, 'newMessage/' + deleteKey));
+            // deleteBox.style.visibility = 'hidden'
         });
     } else {
         let incomingText = document.createElement('li');

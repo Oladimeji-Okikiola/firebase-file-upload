@@ -36,12 +36,12 @@ let searchable = [
     '<a href="the-citadel.html">The Citadel</a>',
     '<a href="facultyPresident.html">Faculty President</a>',
     '<a href="tutorial.html">Tutorial</a>',
-    '<a href="notes.html">notes</a>',
+    '<a href="notes.html">Notes</a>',
     '<a href="siwes.html">Siwes</a>',
-    '<a href="catalogue.html">Siwes</a>',
+    '<a href="catalogue.html">Catalogue</a>',
     '<a href="chat.html">Siwes</a>',
     '<a href="hallResidence.html">Hall of Residence</a>',
-    '<a href="departmentGovernor.html">Governor</a>',
+    '<a href="departmentGovernor.html">Governors</a>',
     '<a href="departmentalPresident.html">Deparmental President</a>',
     '<a href="catalogue.html">Catalogue</a>',
     '<a href="FpasuBar.html">Fpasu Bar</a>',
@@ -50,7 +50,11 @@ let searchable = [
     '<a href="apartment.html">Apartments</a>',
     '<a href="news.html">News</a>',
     '<a href="myProfile.html">Profile</a>',
+    '<a href="products.html">products</a>',
+    '<a href="vDepartments.html">Departments</a>',
+    '<a href="sAffairs.html">Student Affairs</a>',
     '<a href="../departments/marketPlace.html">Market Place</a>',
+    '<a href="products.html">Products</a>',
     `Agbebi`
   ];
 

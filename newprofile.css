@@ -2,6 +2,17 @@
     margin: 0;
     padding: 0;
 }
+body{
+    overflow: scroll;
+    -ms-overflow-style: none;  /* Hide scrollbars for Internet Explorer and Edge */
+    scrollbar-width: none;
+
+}
+body::-webkit-scrollbar {
+    display: none; /* Hide scrollbars for WebKit browsers (e.g., Chrome, Safari) */
+}
+
+
 @media only screen and (max-width: 475px){
     .information{
         display: flex;
@@ -100,10 +111,12 @@
     
     .searchInput{
         width: 200px;
-        height: 20px;
+        height: 40px;
         border-radius: 20px;
         padding: 5px;
         font-size: 15px;
+        display: flex;
+        justify-content: flex-end;
     }
       
       .searchInput:focus {
@@ -339,6 +352,7 @@
             padding: 10px;
         }
         .footerMiddle{
+            display: flex;
             margin: 10px 0;
             align-items: center;
             
@@ -425,6 +439,16 @@
 
 @media only screen and (min-width: 475px){
 
+    body{
+        overflow: scroll;
+        /* overflow-y: hidden; */
+        -ms-overflow-style: none;  /* Hide scrollbars for Internet Explorer and Edge */
+        scrollbar-width: none;
+    
+    }
+    body::-webkit-scrollbar {
+        display: none; /* Hide scrollbars for WebKit browsers (e.g., Chrome, Safari) */
+    }
     .information{
         display: flex;
         justify-content: center;
@@ -491,6 +515,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin: 0 5px 0 0;
     }
     .navigation ul li a:active{
         color: gold;
@@ -526,7 +551,7 @@
         display: flex;
         justify-content: end;
         width: 200px;
-        height: 20px;
+        height: 30px;
         border-radius: 20px;
         padding: 5px;
         font-size: 17px;

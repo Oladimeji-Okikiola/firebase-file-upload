@@ -11,6 +11,23 @@
         padding: 10px 20px;
         margin: 10px 0;
     }
+    .searchBox{
+        margin: 10px;
+        display: flex;
+        justify-content: end;
+    }
+    .searchBox input{
+        height: 30px;
+        width: 300px;
+        border-radius: 10px;
+        padding: 5px 10px;
+    }
+    .searchBox i{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -25px;
+    }
     .shopName{
         font-size: 20px;
         color: black;
@@ -143,6 +160,23 @@
         color: white;
         padding: 10px;
         margin: 10px 0;
+    }
+    .searchBox{
+        margin: 10px;
+        display: flex;
+        justify-content: end;
+    }
+    .searchBox input{
+        height: 30px;
+        width: 300px;
+        border-radius: 10px;
+        padding: 5px 10px;
+    }
+    .searchBox i{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -25px;
     }
     .shopName{
         font-size: 35px;

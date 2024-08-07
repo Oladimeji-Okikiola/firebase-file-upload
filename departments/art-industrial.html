@@ -46,62 +46,7 @@
         <div class="deanDetail" id="deanDetail"></div>
         <!-- HOD -->
         <div class="hodDetails" id="hodDetails"></div>
-    <div>
-        <h2>DEAN'S OFFICE</h2>
-    </div>
-
-    <div>
-        <table class="content-table">
-            <tbody>
-                <tr>
-                    <td>E.M. Olowolaju (Mrs)</td>
-                    <td>B.Sc., MBA, M.Sc, ACA</td>
-                    <td>Dean/Chief Lecturer</td>
-                </tr>
-                <tr>
-                    <td>T.C. Falana</td>
-                    <td>BA(Hons) Lagos; MPA (illorin), MNIM</td>
-                    <td>Deputy Registrar/School Officer 1</td>
-                </tr>
-                <tr>
-                    <td>M.J. Fatoye (Mrs)</td>
-                    <td>B.Sc. (Hons) Oyo</td>
-                    <td>Administrative Officer I</td>
-                </tr>
-                <tr>
-                    <td>Jibike Abdullahi</td>
-                    <td>BSc. (EKSU)</td>
-                    <td>Administrative Officer II</td>
-                </tr>
-                <tr>
-                    <td>A.E. Madubuko</td>
-                    <td>HND (BAM), PGD FM</td>
-                    <td>Asst. Chief Executive Officer</td>
-                </tr>
-                <tr>
-                    <td>O.O. Olaiya</td>
-                    <td>HND (Bus. Admin & Mgt)</td>
-                    <td>Senior Executive Officer</td>
-                </tr>
-                <tr>
-                    <td>S.O. Alade (Mrs)</td>
-                    <td>HND (Idah), MNIPS</td>
-                    <td>Chief Conf. Secretary & Secretary to the Dean</td>
-                </tr>
-                <tr>
-                    <td>G.O. Aseperi</td>
-                    <td>50 wpm. (OSPO)</td>
-                    <td>Chief Secretarial Assistant</td>
-                </tr>
-                <tr>
-                    <td>O.C. Aladedahunsi (Mrs)</td>
-                    <td>NABTEB</td>
-                    <td>Chief Clerical Officer</td>
-                </tr>
-            </tbody>
-
-        </table>
-    </div>
+    
     <div class="department">
         <h1>DEPARTMENT OF Art and Industrial Design</h1>
     </div>
@@ -117,12 +62,6 @@
                 <div class="container" id="containerNDI"></div>
             </section>
         <hr>
-        <h2>3.5.2</h2>
-        <h2>Curriculum Structure</h2>
-            <p>
-                The National Diploma and Higher National Diploma Curriculum is structured for two (2) sessions respectively, i.e. four (4) semesters of classroom and 
-                studio/workshop activities in the institution.
-            </p>
             <h1>ND I FIRST SEMESTER</h1>
             <table class="NdOne">
                 <tbody>
@@ -737,11 +676,10 @@
             <h3>KAMPUS KONNECT</h3>
         </div>
         <div class="iconDiv">
-            <i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-telegram" id="telegram" style="font-size: 25px; margin: 10px;"></i>
+            <a href="#"><i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i></a>
+            <a href="https://x.com/kampus_konnect"> <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://www.instagram.com/kampus_konnect"><i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://wa.link/wix59k"><i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i></a>
            </div>
     </footer>
     <script type="module" src="../newprofile.js"></script>
@@ -759,13 +697,18 @@
         appId: "1:382800829354:web:145aeb3f8e346c016129d3"
         };
 
+        const app = initializeApp(firebaseConfig);
+            let db = getFirestore();
+
+            import { getFirestore, doc, collection, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
         let deanDetail = document.getElementById('deanDetail')
         let hodDetails = document.getElementById('hodDetails')
         let deptPresident = document.getElementById('container')
         let containerNDI = document.getElementById('containerNDI')
         let containerNDII = document.getElementById('containerNDII')
-        let containerHNDI = document.getElementById('containerHNDI')
-        let containerHNDII = document.getElementById('containerHNDII')
+        // let containerHNDI = document.getElementById('containerHNDI')
+        // let containerHNDII = document.getElementById('containerHNDII')
 
 
         // FUNCTION TO DISPLAY THE DEAN'S DETAILS
@@ -777,7 +720,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().deanName}</h2>
                     </div>
                     `
@@ -795,7 +738,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().HODName}</h2>
                     </div>
                     `
@@ -819,20 +762,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -859,20 +802,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -900,20 +843,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -941,7 +884,7 @@
         //                     <div class="otherDetails">
         //                         <div class="profileImageDiv">
         //                             <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-        //                             <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+        //                             <h3>Comr. <span id="name">${doc.data().Firstname}  ${doc.data().Lastname}</span></h3>
         //                         </div>
         //                         <div class="contactsss">
         //                             <div class="otherss">
@@ -981,7 +924,7 @@
         //                     <div class="otherDetails">
         //                         <div class="profileImageDiv">
         //                             <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-        //                             <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+        //                             <h3>Comr. <span id="name">${doc.data().Firstname}  ${doc.data().Lastname}</span></h3>
         //                         </div>
         //                         <div class="contactsss">
         //                             <div class="otherss">

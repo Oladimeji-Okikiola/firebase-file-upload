@@ -4,32 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="homestyle.css">
+    <link rel="stylesheet" href="newprofile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>About</title>
 </head>
 <body>
     
-    <div class="overallHead">
-        <div class="logoName">
-            <img src='./images/logoWhite.png' alt='this is the logo for the website' width='50px'>
-            <h1>KAMPUS KONNECT</h1>
+    <div class="header">
+        <div class="logo">
+            <h3>KAMPUS KONNECT</h3>
         </div>
-        <div class="headNav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li>
-                    <p id="hideShow">Accounts</p>
-                    <div id="accountant" style="display: none;">
-                        <ul>
-                            <li><a href="signIn.html">Sign In</a></li>
-                            <li><a href="account.html">Sign Up</a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Support</a></li>
-            </ul>
+        <div class="navigation">
+            <div class="navAndPic">
+                <div class="navBar">
+                    <ul>
+                        <li><a href="newprofile.html">Home</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                        <li><a href="catalogue.html">Catalogue</a></li>
+                        <li><a href="notes.html">Note</a></li>
+                        <li><a href="./departments/marketPlace.html">Market Place</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li id="signOut">Sign Out</li>
+                    </ul>
+                </div>
+                <div class="nameBar">
+                    <h3  id="usernamed"></h3>
+                </div>
+            </div>
+            <div class="userImageAndName">
+                <img src="images/profile image.png" alt="profile picture" id="userImage" style="height: 60px; width: 60px; border-radius: 50%;">
+                <!-- <h3  id="usernamed"></h3> -->
+            </div>
         </div>
-    </div>
+   </div>
 
 
     <div class="firstCome">
@@ -79,6 +86,7 @@
 
 
 
+    <script type="module" src="newprofile.js"></script>
 
     <script>
         let hideShow = document.getElementById('hideShow')

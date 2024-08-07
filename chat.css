@@ -10,16 +10,16 @@
 
 
 @media only screen and (min-width: 475px) {
-    .deleteBtn{
-        display: none;
+    /* .deleteBtn{
+        display: flex;
         position: absolute;
-    }
+    } */
     .inputAndButtom{
         background-color:  #8F758E;
         position: fixed;
         bottom: 1px;
         border: 2px solid white;
-        outline: 2px solid black;
+        outline: 2px solid #947C9C;
         border-radius: 10px;
         padding: 10px;
         width: 89vw;
@@ -27,7 +27,7 @@
     #textArea{
         width: 83vw;
         border: 2px solid white;
-        outline: 2px solid black;
+        outline: 2px solid #947C9C;
         border-radius: 10px;
         padding: 10px;
         font-size: 20px;
@@ -37,14 +37,15 @@
     .buttonDiv{
         display: flex;
         justify-content: center;
+        background-color: #8F758E;
     }
     
     
     #Send{
-        background-color: black;
+        background-color: #947C9C;
         padding: 10px;
-        border: 2px solid white;
-        outline: 2px solid black;
+        border: 3px solid white;
+        outline: 2px solid #947C9C;
         color: white;
         border-radius: 10px;
         width: 100px;
@@ -53,7 +54,7 @@
         cursor: pointer;
     }
     #Send:hover{
-        background-color: green;
+        background-color: rgb(157, 4, 147);
     }
     
     #incoming{
@@ -80,6 +81,7 @@
     }
     
     .deleteBtn{
+        /* display: flex; */
         color: red;
         margin: 0 5px;
         cursor: pointer;
@@ -129,6 +131,7 @@
         display: none;
         justify-content: center;
         align-items: center;
+        position: absolute;
     }
     #profileImage{
         width: 45px;
@@ -180,10 +183,10 @@
     
     
     #Send{
-        background-color: black;
+        background-color: #947C9C;
         padding: 10px;
         border: 2px solid white;
-        outline: 2px solid black;
+        outline: 2px solid #947C9C;
         color: white;
         border-radius: 10px;
         width: 100px;
@@ -192,7 +195,7 @@
         cursor: pointer;
     }
     #Send:hover{
-        background-color: green;
+        background-color: rgb(60, 0, 68);
     }
     
     #incoming{
@@ -218,6 +221,7 @@
     }
     
     .deleteBtn{
+        display: inline-block;
         color: red;
         margin: 0 5px;
         cursor: pointer;

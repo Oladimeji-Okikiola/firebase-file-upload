@@ -51,30 +51,7 @@
         <h2>DEAN'S OFFICE</h2>
     </div>
 
-    <div>
-        <table class="content-table">
-            <tbody>
-                <tr>
-                    <td>Dr. M.O Akinola</td>
-                    <td>HND (Akure); PGD; M.Tech(FUTA), <br> Ph.D (Akure); Cert in Computer <br> MSSSN; HORTSON</td>
-                    <td>Dean/Chief Lecturer</td>
-                </tr>
-                <tr>
-                    <td>O. R. Falade (Mrs)</td>
-                    <td>MBA; B.Sc. (Bus.Admin) <br> Dip. in Insurance; CIIN</td>
-                    <td>Senior Assistant Registrar/ School Officer</td>
-                </tr>
-                <tr>
-                    <td>Bamisaye Isaac</td>
-                    <td>B.Sc. (Hons) Pub. Admin</td>
-                    <td>Higher Executive Officer</td>
-                </tr>
-            </tbody>
-
-        </table>
-    </div>
     <div class="threeOne">
-        <h1>3.1</h1>
         <h1>General background</h1>
         <p>
             The School of Agriculture and Agricultural Technology was established on 17th February 2021 by the proclamation of the Academic Board at its 377th Statutory meeting.
@@ -109,12 +86,6 @@
             <div class="container" id="containerNDI"></div>
         </section>
         <hr>
-        <h2>3.5.2</h2>
-        <h2>Curriculum Structure</h2>
-            <p>
-                The National Diploma and Higher National Diploma Curriculum is structured for two (2) sessions respectively, i.e. four (4) semesters of classroom and 
-                studio/workshop activities in the institution.
-            </p>
             <h1>ND I FIRST SEMESTER</h1>
             <table class="NdOne">
                 <tbody>
@@ -699,17 +670,16 @@
             <h3>KAMPUS KONNECT</h3>
         </div>
         <div class="iconDiv">
-            <i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-telegram" id="telegram" style="font-size: 25px; margin: 10px;"></i>
+            <a href="#"><i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i></a>
+            <a href="https://x.com/kampus_konnect"> <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://www.instagram.com/kampus_konnect"><i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://wa.link/wix59k"><i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i></a>
            </div>
     </footer>
     <script type="module" src="../newprofile.js"></script>
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 
         const firebaseConfig = {
         apiKey: "AIzaSyBmY2XtNwXZrHeE5za2cp7sOFYOKjSvdCQ",
@@ -719,6 +689,11 @@
         messagingSenderId: "382800829354",
         appId: "1:382800829354:web:145aeb3f8e346c016129d3"
         };
+
+        const app = initializeApp(firebaseConfig);
+            let db = getFirestore();
+
+            import { getFirestore, doc, collection, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
         let deanDetail = document.getElementById('deanDetail')
         let hodDetails = document.getElementById('hodDetails')
@@ -736,7 +711,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().deanName}</h2>
                     </div>
                     `
@@ -754,7 +729,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().HODName}</h2>
                     </div>
                     `
@@ -778,20 +753,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -818,20 +793,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -859,20 +834,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 

@@ -60,11 +60,13 @@
         .Dean-Picture img{
             width: 200px;
             height: 200px;
+            border-radius: 50%;
             clip-path: circle(50%);
         }
         .HOD-Picture img{
             width: 200px;
             height: 200px;
+            border-radius: 50%;
             clip-path: circle(50%);
         }
         .deanOffice{
@@ -153,6 +155,11 @@
         .otherss ul li{
             list-style-type: none;
             padding: 10px;
+        }
+        img{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
         }
 }
 
@@ -300,4 +307,9 @@
             list-style-type: none;
             padding: 10px;
         }
+    img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
 }

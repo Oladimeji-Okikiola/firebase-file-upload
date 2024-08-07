@@ -2,7 +2,12 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+/* body{
+    overflow-y: hidden;
+} */
 
 @media only screen and (max-width: 475px){
     .overallHead{
@@ -21,6 +26,21 @@
         border-bottom: 2px solid white;
         width: 100vw;
         margin-bottom: 10px;
+    }
+    .logoName h1{
+        font-size: 20px;
+    }
+    .iconDiv{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+    }
+    .iconDiv i{
+       
+        padding: 10px;
+        margin-right: 5px;
     }
     .headNav ul{
         display: flex;
@@ -136,6 +156,28 @@
         margin: 10px 0;
         font-size: 25px;
         font-weight: bolder;
+    }
+    .generalFooter{
+        background-color: #8F758E;
+        display: flex;
+        flex-direction: column;
+    }
+    .partners{
+        display: flex;
+        align-items: center;
+        /* gap: 20px; */
+        flex-direction: column;
+        color: white;
+        flex-shrink: 1;
+    }
+    .mainLaunch{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8F758E;
+        color: white;
+        border: 2px solid white;
+        height: 50px;
     }
 }
 
@@ -263,5 +305,43 @@
         margin: 10px 0;
         font-size: 25px;
         font-weight: bolder;
+    }
+    .generalFooter{
+        background-color: #8F758E;
+        display: flex;
+        flex-direction: column;
+    }
+    .partners{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-direction: column;
+        color: white;
+        flex-shrink: 1;
+        justify-content: flex-start;
+    }
+    .partners h3{
+        text-align: left;
+    }
+    .mainLaunch{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #8F758E;
+        color: white;
+        border: 2px solid white;
+        height: 50px;
+    }
+    .iconDiv{
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+    }
+    .iconDiv i{
+       
+        padding: 10px;
+        margin-right: 5px;
     }
 }

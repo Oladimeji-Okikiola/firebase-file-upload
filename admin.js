@@ -1958,7 +1958,7 @@ deanDelete.addEventListener('click', deleteForDean)
 HODDelete.addEventListener('click', deleteForHOD)
 
 
-     // FOR HOD 
+     // FOR BOOKS 
      let bookId = document.getElementById('bookId')
      let bookName = document.getElementById('bookName')
      let book = document.getElementById('bookss')
@@ -1967,7 +1967,7 @@ HODDelete.addEventListener('click', deleteForHOD)
      let bookRead = document.getElementById('bookRead')
      let bookDelete = document.getElementById('bookDelete')
      
-     // WRITE FOR HOD
+     // WRITE FOR BOOKS
      
      
      async function writeForbook() {
@@ -2051,7 +2051,7 @@ HODDelete.addEventListener('click', deleteForHOD)
      }
      bookRead.addEventListener('click', readForBOOK)
      
-     // DELETE FOR HOD
+     // DELETE FOR BOOKS
      async function deleteForBOOK(){
          let Id = bookId.value
          var ref = doc(db, "BOOK", Id)
@@ -3044,3 +3044,115 @@ SiwesRead.addEventListener('click', readForSiwes)
         }
     
         infoDelete.addEventListener('click', deleteForInfo)
+
+        // FOR PAST QUESTIONS 
+     let questionId = document.getElementById('questionId')
+     let questionName = document.getElementById('questionName')
+     let questionss = document.getElementById('questionss')
+     let questionWrite = document.getElementById('questionWrite')
+     let questionUpdate = document.getElementById('questionUpdate')
+     let questionRead = document.getElementById('questionRead')
+     let questionDelete = document.getElementById('questionDelete')
+     
+     // WRITE FOR PAST QUESTIONS 
+     
+     
+     async function writeForquestion() {
+         let Id = questionId.value
+         let Name = questionName.value
+        //  let Image = book.value
+ 
+         if (Id == '' || Name == '' ){
+             alert('Please fill all empty spaces');
+         } else {
+             let file = questionss.files[0];
+             var fileName = file.name;
+     
+             const storageRef = ref(storage, 'PAST-QUESTIONS/' + fileName);
+             const uploadTask = uploadBytesResumable(storageRef, file);
+     
+             uploadTask.on('state_changed', (snapshot) => {
+                 console.log(snapshot);
+             }, (error) => {
+                 console.log(error);
+             }, async () => {
+                 const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+     
+                 const ref = doc(db, "PAST-QUESTIONS", Id);
+                 await setDoc(ref, {
+                     Id : Id,
+                     Name : Name,
+                     PhotoURL: downloadURL,  
+                 });
+     
+                 alert("Uploading Successful");
+                 questionId.value = ''
+                 questionName.value = ''
+             });
+         }
+     }
+     questionWrite.addEventListener('click', writeForquestion)
+     
+     // UPDATE FOR PAST QUESTIONS 
+     async function updateForquestion(){
+     
+         let Id = questionId.value
+     
+         let photoUURL = document.createElement('li')
+     
+         var ref = doc(db, "PAST-QUESTIONS", Id)
+         await updateDoc(ref, {
+             Id : Id,
+             Name : Name,
+             PhotoURL: photoUURL,
+     
+         })
+         .then(() => {
+             alert('Updated Successfully')
+         })
+         .catch(error => {
+             alert(error.message)
+         })
+         questionId.value = ''
+         questionName.value = ''
+     }
+     questionUpdate.addEventListener('click', updateForquestion)
+
+     // READ FOR PAST QUESTIONS 
+     async function readForQuestion(){
+     
+        let Id = questionId.value
+     
+         var ref = doc(db, "PAST-QUESTIONS", Id)
+         const docSnap = await getDoc(ref)
+         if(docSnap.exists()){
+             // console.log(docSnap.data())
+             questionId.value = docSnap.data().Id
+             questionName.value = docSnap.data().Name
+             let photoSee = docSnap.data().PhotoURL
+     
+             console.log(photoSee)
+         }else{
+             alert('data does not exist')
+         }
+     }
+     questionRead.addEventListener('click', readForQuestion)
+     
+     // DELETE FOR PAST QUESTIONS 
+     async function deleteForQuestion(){
+        let Id = questionId.value
+         var ref = doc(db, "PAST-QUESTIONS", Id)
+         const docSnap = await getDoc(ref)
+         if(!docSnap.exists()){
+             alert('No such Document')
+         }
+         await deleteDoc(ref)
+         .then(() => {
+             alert('Document Deleted')
+         })
+         .catch(error => {
+             alert(error.message)
+         })
+     }
+     
+     questionDelete.addEventListener('click', deleteForQuestion)

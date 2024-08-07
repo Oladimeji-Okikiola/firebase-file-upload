@@ -46,68 +46,10 @@
     <div class="deanDetail" id="deanDetail"></div>
     <!-- HOD -->
     <div class="hodDetails" id="hodDetails"></div>
-    <div>
-        <h2>DEAN'S OFFICE</h2>
-    </div>
-
-    <div>
-        <table class="content-table">
-            <tbody>
-                <tr>
-                    <td>E.M. Olowolaju (Mrs)</td>
-                    <td>B.Sc., MBA, M.Sc, ACA</td>
-                    <td>Dean/Chief Lecturer</td>
-                </tr>
-                <tr>
-                    <td>T.C. Falana</td>
-                    <td>BA(Hons) Lagos; MPA (illorin), MNIM</td>
-                    <td>Deputy Registrar/School Officer 1</td>
-                </tr>
-                <tr>
-                    <td>M.J. Fatoye (Mrs)</td>
-                    <td>B.Sc. (Hons) Oyo</td>
-                    <td>Administrative Officer I</td>
-                </tr>
-                <tr>
-                    <td>Jibike Abdullahi</td>
-                    <td>BSc. (EKSU)</td>
-                    <td>Administrative Officer II</td>
-                </tr>
-                <tr>
-                    <td>A.E. Madubuko</td>
-                    <td>HND (BAM), PGD FM</td>
-                    <td>Asst. Chief Executive Officer</td>
-                </tr>
-                <tr>
-                    <td>O.O. Olaiya</td>
-                    <td>HND (Bus. Admin & Mgt)</td>
-                    <td>Senior Executive Officer</td>
-                </tr>
-                <tr>
-                    <td>S.O. Alade (Mrs)</td>
-                    <td>HND (Idah), MNIPS</td>
-                    <td>Chief Conf. Secretary & Secretary to the Dean</td>
-                </tr>
-                <tr>
-                    <td>G.O. Aseperi</td>
-                    <td>50 wpm. (OSPO)</td>
-                    <td>Chief Secretarial Assistant</td>
-                </tr>
-                <tr>
-                    <td>O.C. Aladedahunsi (Mrs)</td>
-                    <td>NABTEB</td>
-                    <td>Chief Clerical Officer</td>
-                </tr>
-            </tbody>
-
-        </table>
-    </div>
-
     <div class="department">
         <h1>SCIENCE TECHNOLOGY</h1>
     </div>
     <section class="sectionOne">
-        <h2>3.5.1</h2>
         <h2>Objectives</h2>
         <p>The Department of Marketing is one of the Department in the School of Business Studies. The Department offers National Diploma and Higher National Diploma in Marketing. <br>
             The National Diploma Programme in Marketing is aimed at producing diplomates with appropriate theoretical and practical knowledge to efficiently carry out middle level marketing activities in industry Public Service and as entrepreneurs. <br>
@@ -169,10 +111,13 @@
                     specified field may be considered for admission into the HND programme
                 </li>
                 <li>Candidate offering Applied Chemistry at HND must possess credit in Chemistry at SSCE/NECO/NABTEB. <br> Candidate offering Physics/Electronics at HND must possess credit in 
-                Physics at SSCE/NECO/NABTEB. <br> Candidate offering Biochemistry at HND must possess credit in Chemistry at SSCE/NECO/NABTEB. <br> 
-                Candidate offering Microbiology at HND must possess credit in Chemistry and Biology at SSCE/NECO/NABTEB
-            </li>
+                    Physics at SSCE/NECO/NABTEB. <br> Candidate offering Biochemistry at HND must possess credit in Chemistry at SSCE/NECO/NABTEB. <br> 
+                    Candidate offering Microbiology at HND must possess credit in Chemistry and Biology at SSCE/NECO/NABTEB
+                </li>
             </ol>
+            <p>
+                The required course list for each semester is shown below, with the number of units attached to each course indicated.
+            </p>
         </div>
         <section id="sugPresident">
             <div class="container" id="container"></div>
@@ -184,12 +129,6 @@
             <section id="sugPresident">
                 <div class="container" id="containerNDI"></div>
             </section>
-        <hr>
-        <h2>3.5.2</h2>
-        <h2>Curriculum Structure</h2>
-        <p>
-            The required course list for each semester is shown below, with the number of units attached to each course indicated.
-        </p>
             <h1>ND I FIRST SEMESTER</h1>
             <table class="NdOne">
                 <tbody>
@@ -1576,11 +1515,10 @@
             <h3>KAMPUS KONNECT</h3>
         </div>
         <div class="iconDiv">
-            <i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i>
-            <i class="fa-brands fa-telegram" id="telegram" style="font-size: 25px; margin: 10px;"></i>
+            <a href="#"><i class="fa-brands fa-facebook" id="facebook" style="font-size: 25px; margin: 10px;"></i></a>
+            <a href="https://x.com/kampus_konnect"> <i class="fa-brands fa-twitter" id="twitter" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://www.instagram.com/kampus_konnect"><i class="fa-brands fa-instagram" id="instagram" style="font-size: 25px; margin: 10px;"></i></i></a>
+            <a href="https://wa.link/wix59k"><i class="fa-brands fa-whatsapp" id="whatsapp" style="font-size: 25px; margin: 10px;"></i></a>
            </div>
     </footer>
     <script type="module" src="../newprofile.js"></script>
@@ -1597,6 +1535,11 @@
         messagingSenderId: "382800829354",
         appId: "1:382800829354:web:145aeb3f8e346c016129d3"
         };
+
+        const app = initializeApp(firebaseConfig);
+            let db = getFirestore();
+
+            import { getFirestore, doc, collection, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
         let deanDetail = document.getElementById('deanDetail')
         let hodDetails = document.getElementById('hodDetails')
@@ -1624,7 +1567,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().deanName}</h2>
                     </div>
                     `
@@ -1642,7 +1585,7 @@
                 var newDiv = document.createElement('div')
                 newDiv.innerHTML = `
                     <div class="Dean-Picture">
-                        <img src="${doc.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
+                        <img src="${docSnap.data().PhotoURL}" id="deanImage" alt="Dean of School of Engineering" width="50px" id="deanPicture">
                         <h2 id="deanName">${docSnap.data().HODName}</h2>
                     </div>
                     `
@@ -1666,20 +1609,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1706,20 +1649,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1747,20 +1690,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1787,20 +1730,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1827,20 +1770,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1867,20 +1810,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1907,20 +1850,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1947,20 +1890,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -1987,20 +1930,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -2027,20 +1970,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
@@ -2067,20 +2010,20 @@
                         <div>
                             <div class="otherDetails">
                                 <div class="profileImageDiv">
-                                    <img src${doc.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
-                                    <h3>Comr. <span id="name">${doc.data().FirstName}  ${doc.data().LastName}</span></h3>
+                                    <img src="${docSnap.data().PhotoURL}" alt="profile image" class="profileImage" id="profileImage">
+                                    <h3>Comr. <span id="name">${docSnap.data().Firstname}  ${docSnap.data().Lastname}</span></h3>
                                 </div>
                                 <div class="contactsss">
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa fa-phone" style="font-size: 25px; color: blue;"></i></li>
-                                            <li id="phone">${doc.data().Phone}</li>
+                                            <li id="phone">${docSnap.data().Phone}</li>
                                         </ul>
                                     </div>
                                     <div class="otherss">
                                         <ul>
                                             <li><i class="fa-brands fa-whatsapp" style="font-size: 25px; color: green;"></i></li>
-                                            <li id="whatsapp">${doc.data().Whatsapp}</li>
+                                            <li id="whatsapp">${docSnap.data().Whatsapp}</li>
                                         </ul>
                                     </div>
                                 
