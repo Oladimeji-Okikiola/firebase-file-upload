@@ -7,9 +7,13 @@
 @media only screen and (max-width: 475px){
 
     .searchBox{
+        margin: 5px 0;
         display: flex;
         align-items: center;
         justify-content: end;
+    }
+    p{
+        text-align-last: center;
     }
     input{
         width: 200px;
@@ -29,7 +33,7 @@
         align-items: center;
         flex-direction: column;
         gap: 8px;
-        border: 2px solid black;
+        /* border: 2px solid black; */
         padding: 5px;
         height: 400px;
         background-color: rgb(236, 229, 221);
@@ -44,6 +48,12 @@
     button:hover{
         background-color: green;
         color: white;
+    }
+    .productName{
+        font-size: 20px;
+        text-align-last: center;
+        font-weight: bolder;
+        color: chocolate;
     }
 
     .innerCard > a{

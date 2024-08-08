@@ -39,12 +39,12 @@
 </div>
 <!-- SEARCH BAR -->
 <div class="searchBox">
-    <input type="text" id="searchInput" placeholder="Type here...">
+    <input type="text" id="searchInput" placeholder="search product...">
     <i class="fa fa-search" id="searchThrough" style="font-size: 20px;"></i>
 </div>
 
-<div class="productCard">
-    <div class="innerCard">
+<div class="productCard" id="productCard">
+    <!-- <div class="innerCard">
         <img src="images/30000mAh power bank.jpg" class="productImages" alt="vegetable spicy" width="40%">
         <div class="otherDetails"></div>
         <h3>30000mAh Powerbank</h3>
@@ -127,9 +127,90 @@
         </p>
         <h3>&#x20A6;10,350</h3>
         <a href="#"><button id="buyBtn">Buy now</button></a>
-    </div>
+    </div> -->
 </div>
 
 <script type="module" src="newprofile.js"></script>
+
+<script type="module">
+    let searchThrough = document.getElementById('searchThrough')
+    let productCard = document.getElementById('productCard')
+
+        let searchBtn = document.getElementById('searchInput');
+        let querySnapshot = [];
+        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+        import { getFirestore, doc, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+        
+        const firebaseConfig = {
+          apiKey: "AIzaSyBmY2XtNwXZrHeE5za2cp7sOFYOKjSvdCQ",
+          authDomain: "school-newusersign.firebaseapp.com",
+          projectId: "school-newusersign",
+          storageBucket: "school-newusersign.appspot.com",
+          messagingSenderId: "382800829354",
+          appId: "1:382800829354:web:145aeb3f8e346c016129d3"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        let db = getFirestore();
+        let displayTutorial = document.getElementById('mainDisplay');
+        const myCollection = collection(db, 'PRODUCTS');
+        
+        // // THE SEARCH WITH CLICKING
+        // searchThrough.addEventListener('click', e => {
+        //     let searchedString = e.target.value.toLowerCase();
+        //     let returnValue = querySnapshot.docs.filter(newEntry => {
+        //         return newEntry.data().productName.toLowerCase().includes(searchedString);
+        //     });
+        //     displayDataIn(returnValue);
+        // });
+
+
+
+        // THE SEARCH WITH KEYUP
+
+        searchBtn.addEventListener('keyup', e => {
+            let searchedString = e.target.value.toLowerCase();
+            console.log(searchedString);
+            let returnValue = querySnapshot.docs.filter(newEntry => {
+                return newEntry.data().productName.toLowerCase().includes(searchedString);
+            });
+            displayDataIn(returnValue);
+        });
+        
+        async function readAllDocuments() {
+          try {
+            querySnapshot = await getDocs(myCollection);
+            displayDataIn(querySnapshot);
+          } catch (error) {
+            console.error('Error reading documents: ', error);
+          }
+        }
+        
+        readAllDocuments();
+        
+        function displayDataIn(querySnapshot) {
+            productCard.innerHTML = ''; // Clear previous content
+            querySnapshot.forEach((element) => {
+                let newDiv = document.createElement('div')
+                newDiv.setAttribute('class', 'innerCard')
+                newDiv.innerHTML = `
+                
+                <img src="${element.data().productImage}" class="productImages" alt="vegetable spicy" width="40%">
+                <p class="productName">${element.data().productName}</p>
+                <p>
+                    ${element.data().productDescription}
+                    
+                </p>
+                <h3>&#x20A6;${element.data().productPrice}</h3>
+                <a href="${element.data().productContact}"><button id="buyBtn">Buy now</button></a>
+                
+            `
+            productCard.appendChild(newDiv)
+            // console.log(doc.id, ' => ', doc.data());
+            });
+        }
+
+</script>
 </body>
 </html>

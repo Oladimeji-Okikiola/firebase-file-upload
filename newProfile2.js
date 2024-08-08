@@ -50,7 +50,6 @@ let searchable = [
     '<a href="apartment.html">Apartments</a>',
     '<a href="news.html">News</a>',
     '<a href="myProfile.html">Profile</a>',
-    '<a href="products.html">products</a>',
     '<a href="vDepartments.html">Departments</a>',
     '<a href="sAffairs.html">Student Affairs</a>',
     '<a href="../departments/marketPlace.html">Market Place</a>',
