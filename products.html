@@ -18,7 +18,7 @@
         <div class="navAndPic">
             <div class="navBar">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="newprofile.html">Home</a></li>
                     <li><a href="chat.html">Chat</a></li>
                     <li><a href="catalogue.html">Catalogue</a></li>
                     <li><a href="notes.html">Note</a></li>
@@ -188,28 +188,63 @@
         }
         
         readAllDocuments();
+
+
+    function displayDataIn(querySnapshot) {
+        productCard.innerHTML = ''; // Clear previous content
+        querySnapshot.forEach((element) => {
+        let newDiv = document.createElement('div');
+        newDiv.setAttribute('class', 'innerCard');
+        newDiv.innerHTML = `
+        <img src="${element.data().productImage}" class="productImages" alt="vegetable spicy" width="40%">
+        <p class="productName">${element.data().productName}</p>
+        <p>
+            ${element.data().productDescription}
+        </p>
+        <h3>&#x20A6;${element.data().productPrice}</h3>
+        <button class="buyBtn">Buy now</button>
+        `;
+
+        // Add event listener to the button to redirect to WhatsApp with product details
+        newDiv.querySelector('.buyBtn').addEventListener('click', () => {
+            const productName = element.data().productName;
+            const productDescription = element.data().productDescription;
+            const productImage = element.data().productImage;
+            const whatsappLink = element.data().productContact;
+            
+            // Construct the WhatsApp message
+            const message = `Product Name: ${productName}\nDescription: ${productDescription}\nImage: ${productImage}`;
+            const encodedMessage = encodeURIComponent(message);
+            const fullWhatsappLink = `${whatsappLink}?text=${encodedMessage}`;
+
+            // Redirect to the constructed WhatsApp link
+            window.location.href = fullWhatsappLink;
+        });
+
+        productCard.appendChild(newDiv);
+    });
+}
         
-        function displayDataIn(querySnapshot) {
-            productCard.innerHTML = ''; // Clear previous content
-            querySnapshot.forEach((element) => {
-                let newDiv = document.createElement('div')
-                newDiv.setAttribute('class', 'innerCard')
-                newDiv.innerHTML = `
+        // function displayDataIn(querySnapshot) {
+        //     productCard.innerHTML = ''; 
+        //     querySnapshot.forEach((element) => {
+        //         let newDiv = document.createElement('div')
+        //         newDiv.setAttribute('class', 'innerCard')
+        //         newDiv.innerHTML = `
                 
-                <img src="${element.data().productImage}" class="productImages" alt="vegetable spicy" width="40%">
-                <p class="productName">${element.data().productName}</p>
-                <p>
-                    ${element.data().productDescription}
+        //         <img src="${element.data().productImage}" class="productImages" alt="vegetable spicy" width="40%">
+        //         <p class="productName">${element.data().productName}</p>
+        //         <p>
+        //             ${element.data().productDescription}
                     
-                </p>
-                <h3>&#x20A6;${element.data().productPrice}</h3>
-                <a href="${element.data().productContact}"><button id="buyBtn">Buy now</button></a>
+        //         </p>
+        //         <h3>&#x20A6;${element.data().productPrice}</h3>
+        //         <a href="${element.data().productContact}"><button id="buyBtn">Buy now</button></a>
                 
-            `
-            productCard.appendChild(newDiv)
-            // console.log(doc.id, ' => ', doc.data());
-            });
-        }
+        //     `
+        //     productCard.appendChild(newDiv)
+        //     });
+        // }
 
 </script>
 </body>
